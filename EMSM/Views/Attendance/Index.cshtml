@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EMS.Models.EmployeeAttendance>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Employee ID
+        </th>
+
+        <th>
+            Attendance Date
+        </th>
+
+        <th>
+            Attendance(0|1)
+        </th>
+        <th>
+            Arrival Time
+        </th>
+        <th>
+            Departure Time
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.curDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_Attempt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endTime)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

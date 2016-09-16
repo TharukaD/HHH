@@ -1,0 +1,88 @@
+﻿@model EMS.Models.Employee
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_First_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Last_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Last_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_NIC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_NIC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Pic_Path)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Pic_Path)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Money_Per_Hour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Money_Per_Hour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Recomended_Work_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Recomended_Work_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_Identify)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_Identify)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

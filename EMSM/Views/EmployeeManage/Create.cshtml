@@ -1,0 +1,101 @@
+﻿@model EMS.Models.Employee
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Fill Following Employee Details</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="control-label  col-md-2">
+                Employee First name
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Emp_First_Name)
+                @Html.ValidationMessageFor(model => model.Emp_First_Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label  col-md-2">
+                Employee Last Name
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Emp_Last_Name)
+                @Html.ValidationMessageFor(model => model.Emp_Last_Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label  col-md-2">
+                Employee NIC No
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Emp_NIC)
+                @Html.ValidationMessageFor(model => model.Emp_NIC)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label  col-md-2">
+                Employee Contact No
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Emp_Contact)
+                @Html.ValidationMessageFor(model => model.Emp_Contact)
+            </div>
+        </div>
+
+        <!--
+        <div class="form-group">
+           @*@Html.LabelFor(model => model.Emp_Pic_Path, new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Emp_Pic_Path)*@
+                @*@Html.ValidationMessageFor(model => model.Emp_Pic_Path)*@
+            </div>
+        </div>
+         -->
+        <div class="form-group">
+            <div class="control-label  col-md-2">
+                Money Per Hour($)
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Emp_Money_Per_Hour)
+                @Html.ValidationMessageFor(model => model.Emp_Money_Per_Hour)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label  col-md-2">
+                PerDay Work Time(h)
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Emp_Recomended_Work_Time)
+                @Html.ValidationMessageFor(model => model.Emp_Recomended_Work_Time)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

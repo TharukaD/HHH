@@ -1,0 +1,50 @@
+﻿@model EMS.Models.EmployeeAttendance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EmployeeAttendance</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.curDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.curDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_Attempt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_Attempt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

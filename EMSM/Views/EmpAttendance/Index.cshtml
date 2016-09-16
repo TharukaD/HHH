@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EMSM.Models.EmpAttendance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Today Attendance</h2>
+<td>
+   
+    |  @Html.ActionLink("All Attendance", "Details", new { /* id=item.PrimaryKey */ })   |   
+</td>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Employee ID
+        </th>
+
+        <th>
+            Attendance Date
+        </th>
+
+        <th>
+            Attendance(0|1)
+        </th>
+        <th>
+            Arrival Time
+        </th>
+        <th>
+            Departure Time
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employees.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.curDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.is_Attempt)
+        </td>
+        <td>  
+                 
+            @Html.TextBoxFor(modelItem => item.startTime.TimeOfDay)
+            @Html.ValidationMessageFor(modelItem => item.startTime)   
+        </td>
+        <td>
+            @Html.TextBoxFor(modelItem =>item.endTime.TimeOfDay)
+            @Html.ValidationMessageFor(modelItem => item.endTime)   
+        </td>
+        <td>
+            | @Html.ActionLink("set", "setTime", new { id = item.ID,uniqD = item.uniqDate }) | @Html.ActionLink("reset", "resetTime", new { id = item.ID, uniqD = item.uniqDate }) |
+            
+        </td>
+    </tr>
+}
+
+</table>

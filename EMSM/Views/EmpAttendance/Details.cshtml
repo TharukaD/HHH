@@ -1,0 +1,80 @@
+﻿
+@model IEnumerable<EMSM.Models.EmpAttendance>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>All Attendance</h2>
+
+<td>
+    |  @Html.ActionLink("Today Attendance", "Index", new { /* id=item.PrimaryKey */ })   |
+   
+</td>
+
+<div class="row" style="margin-bottom:10px">
+    @using (Html.BeginForm())
+    {
+        <p>
+            <b>Find Employee : </b>@Html.TextBox("eids")
+            <input type="submit" value="search" />
+        </p>
+    }
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            Employee ID
+        </th>
+
+        <th>
+            Attendance Date
+        </th>
+
+        <th>
+            Attendance(0|1)
+        </th>
+        <th>
+            Arrival Time
+        </th>
+        <th>
+            Departure Time
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employees.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.curDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_Attempt)
+                @if (item.is_Attempt == 0 && !item.curDate.Equals(DateTime.Now.Date))
+                {
+                    @Html.ActionLink("Mark", "MarkOlder", new { id = item.ID ,udate=item.uniqDate});
+                }
+                @if(item.is_Attempt == 1 && !item.curDate.Equals(DateTime.Now.Date)) { 
+                     @Html.ActionLink("UnMark", "UnmarkOlder", new { id = item.ID, udate = item.uniqDate }); 
+                }
+                
+               
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startTime)
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endTime)
+                
+            </td>
+            
+        </tr>
+    }
+
+</table>

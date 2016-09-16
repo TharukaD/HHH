@@ -1,0 +1,92 @@
+﻿@model IEnumerable<EMS.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row">
+    <p>
+        @Html.ActionLink("Add New Employee", "Create")
+    </p>
+</div>
+
+<div class="row" style="margin-bottom:20px">
+    <h1>Employee Atttendance : @ViewBag.curDate</h1>
+</div>
+
+<div class="row" style="margin-bottom:10px">
+    @using (Html.BeginForm())
+    {
+        <p>
+            <b>Find Employee : </b>@Html.TextBox("search_string")
+            <input type="submit" value="search" />
+        </p>
+    }
+</div>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Attendance
+        </th>
+        <th>
+            Employee ID
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            NIC No
+        </th>
+        <th>
+            Contact No
+        </th>
+        <th>
+            IS Attend
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Mark", "Mark", new { id = item.ID })
+                |
+                @Html.ActionLink("UnMark", "UnMark", new { id = item.ID })
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emp_First_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emp_Last_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emp_NIC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emp_Contact)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.is_Identify)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
